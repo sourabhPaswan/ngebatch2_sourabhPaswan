@@ -93,11 +93,8 @@ export function getOldest(developers: Developer[]) {
 // 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'
 // For the list above, it would return false
 export function isGlobalGroup(developers: Developer[]) {
-  return (
-    developers.filter((dev) => dev.continent === "Africa") ||
-    developers.filter((dev) => dev.continent === "Americas") ||
-    developers.filter((dev) => dev.continent === "Asia") ||
-    developers.filter((dev) => dev.continent === "Europe") ||
-    developers.filter((dev) => dev.continent === "Oceania")
-  );
+  let GlobalContinents = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+  let developersContinents = developers.map((d: any) => d.continent);
+  return GlobalContinents.every((el) => developersContinents.includes(el));
 }
+

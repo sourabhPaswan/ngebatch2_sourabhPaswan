@@ -27,23 +27,26 @@ export function countFromEurope(developers: Developer[]) {
 // For the list above, it would return ['Hi Sofia, what do you like the most about Javascript?', 'Hi Aisha, what do you like the most about Python?', 'Hi Madison, what do you like the most about Python?']
 export function getGreetings(developers: Developer[]) {
   return developers.map(
-    (d) => `Hi ${d.firstName} what do you like the most about ${d.language}?`
+    (d) => `Hi ${d.firstName}, what do you like the most about ${d.language}?`
   );
 }
 
 // isJSComing should return true if the array contains at least one developer whose language is Javascript.
 // For the list above it would return true.
 export function isJSComing(developers: Developer[]) {
-  return developers.every((d) => d.language === "Javascript");
+  return developers.some((d) => d.language === "Javascript");
 }
 
 // getFirstPythonDeveloper should return the first developer in the array whose language is Python
 // You should return a string formatted like '<firstName>, <country>', or the string 'none' if no python developers are present.
 // For the list above, it would return 'Aisha, Croatia'
 export function getFirstPythonDeveloper(developers: Developer[]) {
-  return developers
-    .filter((d) => d.language === "Python")
-    .map((dev) => (dev ? `${dev.firstName}, ${dev.country}` : "none"));
+  return (
+    developers
+      .filter((d) => d?.language === "Python")
+      .map((dev) => (dev ? `${dev?.firstName}, ${dev?.country}` : "none"))[0] ||
+    "none"
+  );
 }
 
 // getAverageAge should return the average age of the developers (rounded down).
@@ -51,13 +54,13 @@ export function getFirstPythonDeveloper(developers: Developer[]) {
 // For the list above, it would return 30.
 export function getAverageAge(developers: Developer[]) {
   let average = -1;
-  let totalAge: any = 0;
-  let devsCount = developers.length;
+  let totalAge: any = developers
+    .map((ele) => ele?.age)
+    .reduce((a: number, b: number) => a + b, 0);
+  let devsCount = developers?.length;
 
-  for (let i = 0; i < devsCount; i++) {
-    totalAge += totalAge[i];
-  }
-  average = totalAge / developers.length;
+  
+  average = devsCount?totalAge / devsCount:-1;
 
   return average;
 }
@@ -97,4 +100,3 @@ export function isGlobalGroup(developers: Developer[]) {
   let developersContinents = developers.map((d: any) => d.continent);
   return GlobalContinents.every((el) => developersContinents.includes(el));
 }
-

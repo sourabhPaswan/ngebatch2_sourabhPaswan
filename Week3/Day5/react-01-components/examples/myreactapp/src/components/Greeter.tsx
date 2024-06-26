@@ -1,4 +1,5 @@
 import React from "react";
+import Counter from "./counter";
 interface GreetingsProps {
   name?: string;
   isBirthday?: boolean;
@@ -45,6 +46,7 @@ export default function Greeter(obj: GreetingsProps) {
       <>
         {obj.name} {obj.isBirthday}
       </>
+      <Counter />
     </>
   );
 }

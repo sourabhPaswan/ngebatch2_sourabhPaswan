@@ -1,0 +1,159 @@
+Activity
+------------
+
+1. Convert this HTML to JSX 
+
+export default function Bio() {
+  return(
+    <>
+      <div className="intro">
+        <h1>Welcome to my website!</h1>
+      </div>
+      <p className="summary">
+        You can find my thoughts here.
+        <br />
+        <b>And</b> <i>pictures</i> of scientists!
+      </p>
+    </>
+   );
+}
+
+
+2. What is wrong in the below comp? (3 errors)
+
+export function profile() {
+	const description = 'Gregorio Y. Zara';
+  		return 
+ <img src="https://i.imgur.com/QIrZWGIs.jpg" alt={description}/>
+}
+
+3. Fill the blank
+
+export default function TodoList() {
+
+{
+  const today = new Date();
+
+  const gettodos = () => <p>Todos for {today.toDateString()} </p>; // Display the date here
+
+  return (
+    <div>___{gettodos()}_______</div> // Invoke gettotdos
+  );
+}
+
+4. Fix the error and then fill the blank so that finally you see the name of the person with the styles applied as per the theme
+
+const person = {
+    name: "Gregorio Y. Zara",
+    theme: {
+      backgroundColor: "black",
+      color: "pink",
+    },
+  };
+  return (
+    <div style={{ backgroundColor: person.theme.backgroundColor }}>
+      {person.name}
+    </div>
+  );
+
+5. What is wrong in this code? (3 errors)
+
+  const items = ["Apple", "Banana", "Orange"];
+  return (
+    <ul>
+      {items.map((item, idx) => (
+        <li key={idx}>{item}</li>
+      ))}
+    </ul>
+  );
+
+
+6. Complete the activity
+
+const ButtonComponent = () => {
+    const handleClick = () => {
+      console.log("Button clicked!");
+    };
+
+    return (
+      <div>
+        //Create a button which when clicked will call the handleClick method
+        <button onClick={handleClick}>button</button>
+      </div>
+    );
+};
+
+export default ButtonComponent;
+
+7. Complete the blank so that if user is logged in , "Welcome User" must be shown. Also how will you use the ConditionalRendering component in App component?
+
+import React from 'react';
+
+const ConditionalRendering = ({ isLoggedIn }: any) => {
+    return <div>{isLoggedIn ? <Message /> : <></>}</div>;
+  };
+
+  const Message = () => {
+    return <p>Welcome, User!</p>;
+  };
+
+8. Make changes in the below code to display "Username cannot be empty" if the input field is empty. Otherwise greet the user with his name
+
+const InputComponent = () => {
+    const [userName, setUserName] = useState("");
+    const handleInput = (e: any) => setUserName(e.target.value);
+    return (
+      <div>
+        <label>Enter Username</label>
+        <input type="text" onInput={handleInput} />
+        {userName?.length > 0 ? (
+          <p>Hello {userName}.</p>
+        ) : (
+          <p>Username cannot be empty</p>
+        )}
+      </div>
+    );
+  };
+
+9. What is the JSX equivalent of the below HTML?
+
+<ul style={{backgroundColor: "black"}}></ul>
+
+10. Fill the blank so that the className is "user", width and height of image are 100
+
+const url = "https://i.imgur.com/1bX5QH6.jpg";
+  return (
+    <img
+      className="User"
+      src={url}
+      alt="Lin Lanying"
+      width="100"
+      height="100"
+    />
+  );
+
+11. How will you provide a default value of 100 if maxMarks props was not passed by the parent
+
+function ScoreCard({ person, maxMarks:100 }) {
+  // ...
+}
+
+12. What will the below code result in? ---err bcz brackets not closed
+
+function Student(props) {
+  return (
+    <div className="card">
+		<ScoreCard {...props}/>
+	</div>
+
+13. Fix the 2 errors
+
+ <Avatar
+    size={40}
+    person={{
+      name: "Gregorio Y. Zara",
+      imageId: "7vQD0fP",
+    }}
+  />
+
+

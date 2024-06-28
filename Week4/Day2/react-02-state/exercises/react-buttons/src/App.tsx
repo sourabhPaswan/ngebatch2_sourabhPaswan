@@ -6,7 +6,7 @@ import ControlledComponent from "./components/ControlledComponent";
 
 const App = () => {
   // Our global state
-  const [clicks, setClicks] = useState(0);
+  const [clicks, setClicks] = useState<number>(0);
   const [color, setColor] = useState<string>();
 
   // Our clicks state mutation function
